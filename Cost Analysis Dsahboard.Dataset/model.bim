@@ -1,0 +1,837 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Internal_Mfg_Resource_Estimates\",\"Quotes\",\"Product_Dimension\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.126.1261.0 (24.02)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "6516b6b1-fcbe-4b32-9fe7-4756f3c0fdee",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Part_Number",
+        "fromTable": "Product_Dimension",
+        "toColumn": "Part_Number",
+        "toTable": "Internal_Mfg_Resource_Estimates"
+      },
+      {
+        "name": "a2fd739a-b47c-4b20-9b2a-8d39280308d5",
+        "fromColumn": "Part_Number",
+        "fromTable": "Quotes",
+        "toColumn": "Part_Number",
+        "toTable": "Product_Dimension"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Project Siliode Team Member",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "fe6934f068294930a6135978cfacee7c"
+          }
+        ],
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Product_Dimension",
+            "filterExpression": "[Project] = \"Siliode\""
+          }
+        ]
+      },
+      {
+        "name": "Project Kerfuffle Team Member",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "f042d5a96c3844e89a54fa8566d54b5e"
+          }
+        ],
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Product_Dimension",
+            "filterExpression": "[Project] = \"Kerfuffle\""
+          }
+        ]
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DateTableTemplate_0e2b4434-136c-42c8-b2aa-bfd4f5b105cd",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "f69f89d1-78fd-4823-a332-cfb74ed42f78",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b38bca33-686b-4a94-8e00-0710a5f12310",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b59481c8-e608-452c-a9ad-001d51270658",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "43d25b40-ec4b-41b9-b158-a19213f23a51",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "cab9df09-a17b-4474-954e-49fc2dfeccf5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "908ede19-c942-44dc-bb8f-0b27bf146ba3",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "d7dedd03-2645-4372-9051-9f0b3fd54796",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "d7bd0fa6-422c-4be0-82cd-1bbec9a91d7d",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "fda0e5a9-8656-46ca-9f45-c26e6ea94d13",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "d218ac2c-fe70-4fda-8ba2-ec5074e7cbf5",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "9d99c286-07ce-4b10-be38-e79e784acf66",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "cae4c6c9-e881-4c4a-a469-5d42a73d85e5"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "12fbef44-db97-40bf-85e8-d0ec662261d5",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_0e2b4434-136c-42c8-b2aa-bfd4f5b105cd-4adae870-9a78-4af2-a768-25ff52a362a8",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Internal_Mfg_Resource_Estimates",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Machine_Model",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "82586ebe-f4a0-4e1c-ac5c-473a1465ce0d",
+            "sourceColumn": "Machine_Model",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Part_Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7fec3175-c501-460a-be84-c67732e819c4",
+            "sourceColumn": "Part_Number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cost_per_Unit",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "6eeed9c3-242e-4239-befd-e130886838db",
+            "sourceColumn": "Cost_per_Unit",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Unit_Capacity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "078094f1-31f4-4bac-be44-4e1cd1fd139f",
+            "sourceColumn": "Unit_Capacity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Machine_Fixed_Cost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "fc7dab32-4748-4ec5-8eaa-4e9bc6c11ba0",
+            "sourceColumn": "Machine_Fixed_Cost",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Existing_Capacity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "43d19e84-db88-4155-afa5-e4623e30fe99",
+            "sourceColumn": "Existing_Capacity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Machine_Fixed_Overhead_Rate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "52431dbe-cf06-4a52-b574-769944b659ce",
+            "sourceColumn": "Machine_Fixed_Overhead_Rate",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "d172ab30-c789-4266-a064-9b8c6c57d729",
+        "measures": [
+          {
+            "name": "Additional Unit Capacity Required",
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "MINX(Internal_Mfg_Resource_Estimates, MAX('Scenario Volume'[Scenario Volume Value] - Internal_Mfg_Resource_Estimates[Existing_Capacity],0))",
+            "formatString": "#,0",
+            "lineageTag": "bd6f7f1c-ea35-42c0-a48d-61643aa81762"
+          },
+          {
+            "name": "Capital Investment Required (Make)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "MINX(Internal_Mfg_Resource_Estimates, ROUNDUP([Additional Unit Capacity Required] / MIN(Internal_Mfg_Resource_Estimates[Unit_Capacity]),0) * Internal_Mfg_Resource_Estimates[Machine_Fixed_Cost])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "c438dfa5-fb2a-443d-ba36-927d816bca07"
+          },
+          {
+            "name": "Make Scenario Full Cost",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "MINX(Internal_Mfg_Resource_Estimates, [Capital Investment Required (Make)] + Internal_Mfg_Resource_Estimates[Cost_per_Unit] * 'Scenario Volume'[Scenario Volume Value])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "246502bf-ba91-4b63-9ca1-a0d18200e9cf"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Internal_Mfg_Resource_Estimates-3b80261c-d2a7-4348-b961-5bb3c7391623",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "Source = Excel.Workbook(Web.Contents(\"https://assets.datacamp.com/production/repositories/6235/datasets/c9ac53727f1464026b44bd37c60e2de5caef0df9/Fictitious%20RFP%20Responses%20for%20Make%20vs%20Buy.xlsx\"), null, true),    Internal_Mfg_Resource_Estimates_Sheet = Source{[Item=\"Internal_Mfg_Resource_Estimates\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Internal_Mfg_Resource_Estimates_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Machine_Model\", type text}, {\"Part_Number\", type text}, {\"Cost_per_Unit\", type number}, {\"Unit_Capacity\", Int64.Type}, {\"Machine_Fixed_Cost\", Int64.Type}, {\"Existing_Capacity\", Int64.Type}, {\"Machine_Fixed_Overhead_Rate\", type number}, {\"Column8\", type any}, {\"Column9\", type any}, {\"Column10\", type any}, {\"Column11\", type any}, {\"Column12\", type any}, {\"Column13\", type any}, {\"Column14\", type any}, {\"Column15\", type any}, {\"Column16\", type any}, {\"Column17\", type any}, {\"Column18\", type any}, {\"Column19\", type any}, {\"Column20\", type any}, {\"Column21\", type any}, {\"Column22\", type any}, {\"Column23\", type any}, {\"Column24\", type any}, {\"Column25\", type any}, {\"Column26\", type any}, {\"Column27\", type any}}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Changed Type\",{\"Machine_Model\", \"Part_Number\", \"Cost_per_Unit\", \"Unit_Capacity\", \"Machine_Fixed_Cost\", \"Existing_Capacity\", \"Machine_Fixed_Overhead_Rate\"})",
+                "in",
+                "    #\"Removed Other Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Quotes",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Supplier",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9db5b732-35d3-4bbc-99da-fafae7a309c3",
+            "sourceColumn": "Supplier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Part_Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4c6ce8b7-5da1-4b51-9e4d-83c588eeefa2",
+            "sourceColumn": "Part_Number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Volume",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "ec13026b-09db-43c0-b0b7-8c493b8b18f5",
+            "sourceColumn": "Volume",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Non_recurring_expenses",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "e438bdee-54de-45e5-82d2-e4d722e85ecb",
+            "sourceColumn": "Non_recurring_expenses",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Unit_Cost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "5e825c93-03a4-436b-a2fb-c6b4c703eccd",
+            "sourceColumn": "Unit_Cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quote_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4300d987-2ebd-455a-a5da-34d9666b2df8",
+            "sourceColumn": "Quote_ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Extended Cost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "dataType": "double",
+            "expression": "Quotes[Unit_Cost] * Quotes[Volume]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isDataTypeInferred": true,
+            "lineageTag": "8177616b-3c42-491b-8576-054d4e13aeb1",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Full Cost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "dataType": "double",
+            "expression": "Quotes[Extended Cost] + Quotes[Non_recurring_expenses]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isDataTypeInferred": true,
+            "lineageTag": "cb3c05c8-2766-4b65-8e1d-95df1e5784ee",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Yield Rate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "FIRSTNONBLANK('Yield Rate'[Yield Rate], TRUE)",
+            "lineageTag": "3a4cc3bb-c5f5-4524-b3b8-ab6c6dca186d",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "805206a2-3fd5-427a-b85d-7069edec04c8",
+        "partitions": [
+          {
+            "name": "Quotes-a56ab085-73c4-4370-8eb5-a2669f8e2966",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "Source = Excel.Workbook(Web.Contents(\"https://assets.datacamp.com/production/repositories/6235/datasets/c9ac53727f1464026b44bd37c60e2de5caef0df9/Fictitious%20RFP%20Responses%20for%20Make%20vs%20Buy.xlsx\"), null, true),   Quotes_Sheet = Source{[Item=\"Quotes\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Quotes_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Supplier\", type text}, {\"Part_Number\", type text}, {\"Volume\", Int64.Type}, {\"Unit_Cost\", type number}, {\"Non_recurring_expenses\", type number}, {\"Quote_ID\", type text}, {\"Column7\", type any}, {\"Column8\", type any}, {\"Column9\", type any}, {\"Column10\", type any}, {\"Column11\", type any}, {\"Column12\", type any}, {\"Column13\", type any}, {\"Column14\", type any}, {\"Column15\", type any}, {\"Column16\", type any}, {\"Column17\", type any}, {\"Column18\", type any}, {\"Column19\", type any}, {\"Column20\", type any}, {\"Column21\", type any}, {\"Column22\", type any}, {\"Column23\", type any}, {\"Column24\", type any}}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Changed Type\",{\"Supplier\", \"Part_Number\", \"Volume\", \"Unit_Cost\", \"Non_recurring_expenses\",\"Quote_ID\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each ([Supplier] <> null))",
+                "in",
+                "    #\"Filtered Rows\"",
+                "",
+                "    //Hi Marlo, Alma, Val and Hugo"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product_Dimension",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Part_Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9550a69e-ce64-46d6-a817-a13f93bae87c",
+            "sourceColumn": "Part_Number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Part_Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "124322a6-b1c7-48eb-9575-86d8da786e38",
+            "sourceColumn": "Part_Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Project",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "48e54474-134b-43ce-ae94-17270dbab03a",
+            "sourceColumn": "Project",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "3b183d14-63c1-4c11-8b10-9b9e8259c9f7",
+        "partitions": [
+          {
+            "name": "Product_Dimension-a4554d3a-4a88-407f-9e41-1de80f5f0cd5",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "Source = Excel.Workbook(Web.Contents(\"https://assets.datacamp.com/production/repositories/6235/datasets/c9ac53727f1464026b44bd37c60e2de5caef0df9/Fictitious%20RFP%20Responses%20for%20Make%20vs%20Buy.xlsx\"), null, true),    Product_Dimension_Sheet = Source{[Item=\"Product_Dimension\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Product_Dimension_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Part_Number\", type text}, {\"Part_Name\", type text}, {\"Project\", type text}, {\"Column4\", type any}, {\"Column5\", type any}, {\"Column6\", type any}, {\"Column7\", type any}, {\"Column8\", type any}, {\"Column9\", type any}, {\"Column10\", type any}, {\"Column11\", type any}, {\"Column12\", type any}, {\"Column13\", type any}, {\"Column14\", type any}, {\"Column15\", type any}, {\"Column16\", type any}, {\"Column17\", type any}, {\"Column18\", type any}, {\"Column19\", type any}, {\"Column20\", type any}, {\"Column21\", type any}, {\"Column22\", type any}, {\"Column23\", type any}, {\"Column24\", type any}, {\"Column25\", type any}, {\"Column26\", type any}}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Changed Type\",{\"Part_Number\", \"Part_Name\", \"Project\"})",
+                "in",
+                "    #\"Removed Other Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Scenario Volume",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "d08c7c5830974aeba1782f288a29bfee"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Scenario Volume",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": {
+                  "version": 0
+                }
+              }
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": false,
+            "lineageTag": "7feee673-759d-4848-a7bd-a0502adb7a0a",
+            "sourceColumn": "[Value]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "5a2d42b5-f1ab-49dd-a460-f1bfc8b90ef6",
+        "measures": [
+          {
+            "name": "Scenario Volume Value",
+            "expression": "SELECTEDVALUE('Scenario Volume'[Scenario Volume], 15000)",
+            "formatString": "0",
+            "lineageTag": "da42a76a-c27a-4c3f-a79f-dc3c38cd16a9"
+          },
+          {
+            "name": "Buy Scenario Full Cost",
+            "expression": "MINX(FILTER(Quotes, 'Scenario Volume'[Scenario Volume Value] >= Quotes[Volume]), Quotes[Non_recurring_expenses] + Quotes[Unit_Cost] * 'Scenario Volume'[Scenario Volume Value])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "d707a09a-902e-4244-8a67-95443d970354"
+          },
+          {
+            "name": "Make vs Buy",
+            "expression": "IF(ISBLANK([Make Scenario Full Cost]), BLANK(), IF([Make Scenario Full Cost] >= [Buy Scenario Full Cost], \"Buy\",\"Make\"))",
+            "lineageTag": "89aa2b4a-c9d6-4848-8795-0e9bb685f309"
+          },
+          {
+            "name": "Cost Avoidance",
+            "expression": "ABS([Make Scenario Full Cost] -  [Buy Scenario Full Cost])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "a46cb099-7a8d-40bd-9a3a-c2b4c9145f0f"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Scenario Volume-a23139bd-f3f0-4901-b246-bde8632aa8d8",
+            "mode": "import",
+            "source": {
+              "expression": "GENERATESERIES(1000, 100000, 500)",
+              "type": "calculated"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
